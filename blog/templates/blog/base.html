@@ -1,0 +1,30 @@
+{% load staticfiles %}
+<html>
+    <head>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link href="http://fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+        <title>My First Django Apps</title>
+    </head>
+    <body>
+    <div class="page-header">
+
+        <!-- autentifikasi apakah user suda login atau belum -->
+        {% if user.is_authenticated %}
+        <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+        {% endif %}
+        <h1><a href="/">My First Django Apps</a></h1>
+    </div>
+    <div class="content container">
+        <div class="row">
+            <div class="col-md-8">
+
+            {% block content %}
+            <!-- content dari masing-masing halaman hasil extend akan ditampilkan disini  -->
+            {% endblock %}
+            </div>
+        </div>
+    </div>
+    </body>
+</html>

@@ -1,0 +1,13 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+    {% for story in stories %}
+     <div class="post">
+         <div class="date">
+             <p>published: {{ story.published_date }}</p>
+         </div>
+         <h1><a href="{% url 'post_detail' pk=story.pk %}">{{ story.title }}</a></h1>
+         <p>{{ story.text|linebreaks }}</p>
+     </div>
+    {% endfor %}
+{% endblock %}
+               
